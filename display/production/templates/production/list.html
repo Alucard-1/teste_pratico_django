@@ -21,7 +21,7 @@
 
     <main class="main-container">
 
-       <!-- sua_template.html -->
+       
 
         <table class="table-container" id="minhaTabela">
             <tr>
@@ -29,24 +29,21 @@
                 <th class="th">INICIADOS</th>
                 <th class="th">CONCLUÍDOS</th>
             </tr>
-            {% for tupla in no %}
-                <tr>
-                    <td class="time">
-                        <ul class="ul" >
-                            {% for tupla in no %}
-                                <li class="row">{{ tupla.2 }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-
-                    <td class="time">
-                        <ul class="ul">
-                            {% for tupla in in %}
-                                <li  class="row">{{ tupla.2 }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-
+            <tr>
+                <td class="time">
+                    <ul class="ul">
+                        {% for tupla in no %}
+                            <li class="row">{{ tupla.2 }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td class="time">
+                    <ul class="ul">
+                        {% for tupla in in %}
+                            <li class="row">{{ tupla.2 }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
                 <td class="time">
                     <ul class="ul">
                         {% for tupla in end %}
@@ -54,10 +51,8 @@
                         {% endfor %}
                     </ul>
                 </td>
-                </tr>
-            {% endfor %}
+            </tr>
         </table>
-
      
     </main>
 
