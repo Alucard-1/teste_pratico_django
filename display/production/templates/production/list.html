@@ -33,22 +33,22 @@
             <tr class="teste">
                 <td class="time">
                     <ul class="ul">
-                        {% for tupla in no %}
-                        <li class="row">{{ tupla.1 }}</li>
+                        {% for tupla in not_started %}
+                        <li class="row">{{ tupla.2 }}</li>
                         {% endfor %}
                     </ul>
                 </td>
                 <td class="time">
                     <ul class="ul">
-                        {% for tupla in in %}
-                        <li class="row">{{ tupla.1 }}</li>
+                        {% for tupla in started %}
+                        <li class="row">{{ tupla.2 }}</li>
                         {% endfor %}
                     </ul>
                 </td>
                 <td class="time">
                     <ul class="ul">
-                        {% for tupla in end %}
-                        <li class="row">{{ tupla.1 }}</li>
+                        {% for tupla in concluded %}
+                        <li class="row">{{ tupla.2 }}</li>
                         {% endfor %}
                     </ul>
                 </td>
