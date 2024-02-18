@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    
+    <title>Teste</title>
+
+    
+</head>
+
+
+<body class="body">
+    
+    <header  class="header-container">
+        <h1>Teste Prático</h1>
+    </header>
+
+
+    <main class="main-container">
+
+       <!-- sua_template.html -->
+
+        <table class="table-container" id="minhaTabela">
+            <tr>
+                <th class="th">CRIADOS</th>
+                <th class="th">INICIADOS</th>
+                <th class="th">CONCLUÍDOS</th>
+            </tr>
+            {% for tupla in no %}
+                <tr>
+                    <td class="time">
+                        <ul class="ul" >
+                            {% for tupla in no %}
+                                <li class="row">{{ tupla.2 }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+
+                    <td class="time">
+                        <ul class="ul">
+                            {% for tupla in in %}
+                                <li  class="row">{{ tupla.2 }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+
+                <td class="time">
+                    <ul class="ul">
+                        {% for tupla in end %}
+                            <li class="row">{{ tupla.2 }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+     
+    </main>
+
+    
+  
+    
+    
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
