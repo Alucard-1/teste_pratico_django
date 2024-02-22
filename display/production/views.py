@@ -5,6 +5,8 @@ from django.db.models.functions import Concat, Substr
 from django.db import connection
 from django.http import HttpResponse
 
+
+
 def list_production(request):
    
     

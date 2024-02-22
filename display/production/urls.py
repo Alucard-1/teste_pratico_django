@@ -2,6 +2,7 @@ from django.urls import path
 
 from production.views import list_production
 
+
 app_name = 'productions'
 
 
