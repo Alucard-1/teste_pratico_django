@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="PT-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/criados.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Setor de Crição de produtos</title>
+</head>
+
+<body>
+
+    <header class="header-container">
+       
+        <h1 class="title">Setor de Iniciação</h1>
+
+        
+    </header> 
+    
+    <main>
+
+        <di>
+            <a class="nav" href="{% url 'productions:list_production'  %}">
+                <span>Home</span>
+            </a>
+    
+            <a class="nav" href="{% url 'productions:button_2'  %}">
+                <span> Setor De Conclusão</span>
+            </a>
+        </di>
+
+
+        <table class="table-container" id="minhaTabela">
+            <tr>
+                <th class="th">Produtos disponíveis para se iniciar:</th>
+
+            </tr>
+            <tr class="teste">
+                <td class="time">
+                    <ul class="ul">
+                        {% for tupla in not_started %}
+                        <li class="row">{{ tupla.2 }}</li>
+                        
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+
+        </table>
+    </main>
+
+    <form method="post" action='{% url "productions:change-to-started" %}' >
+        {% csrf_token %}
+        <div class="label-container">
+            <label >Insira o produto a ser iniciado : </label>          
+        </div>
+
+        <div class="button-container">
+            <input class="input" name = 'code_product_not_started' type="text"   placeholder="AUTO...">
+            <button type="submit" class="button"><i class="fa-solid fa-check"></i></button>
+          
+        </div>        
+    </form>
+</body>
+
+</html>
