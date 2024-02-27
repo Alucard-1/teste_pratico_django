@@ -61,20 +61,27 @@ def change_status_production_to_started(request):
     if request.method == 'POST':
         cod_production=request.POST.get('code_product_not_started', '')
         if cod_production=='':
-            raise Exception('cod production not found')
+             list(messages.get_messages(request))
+             messages.error(request,'Não é permitido um valor vazio')
+        else:
+            try:
+                
+                
+                sd3010 = Sd3010.objects.filter(d3_lotectl=cod_production).first()
+                sd3010.d3_loteprt = cod_production
+                sd3010.save()
+                list(messages.get_messages(request))
+                messages.success(request,'Produto iniciado com sucesso')
+                
+                
+            except:
+                list(messages.get_messages(request))
+                messages.error(request,'Produto não encontrado')
         
-        try:
-            
-            
-            sd3010 = Sd3010.objects.filter(d3_lotectl=cod_production).first()
-            sd3010.d3_loteprt = cod_production
-            sd3010.save()
-            
-            return redirect('productions:production_started')
-        except:
-            raise Exception('Producton not found')
+        return redirect('productions:production_started')
     
-    raise Exception('not permission method get')
+    raise Exception('Não é permitido o método get')
+
 
 
 #Busca e retorna os valores para a página dos produtos iniciados
@@ -94,20 +101,28 @@ def change_status_production_concluded(request):
     if request.method == 'POST':
         cod_production=request.POST.get('code_product_started', '')
         if cod_production=='':
-            raise Exception('cod production not found')
-        
-        try:
+            list(messages.get_messages(request))
+            messages.error(request,'Não é permitido um valor vazio')
+        else:
+            try:
+                
             
-        
-            sd3010 = Sd3010.objects.filter(d3_lotectl=cod_production).first()
-            sd3010.d3_emissao ='20230802' 
-            sd3010.d3_quant ='1'
-            sd3010.save()
-            
-            return redirect('productions:concluded')
-        except:
-            raise Exception('Producton not found')
+                sd3010 = Sd3010.objects.filter(d3_lotectl=cod_production).first()
+                sd3010.d3_emissao ='20230802' 
+                sd3010.d3_quant ='1'
+                sd3010.save()
+                list(messages.get_messages(request))
+                messages.success(request,'Produto iniciado com sucesso')
+
+
+                
+            except:
+                list(messages.get_messages(request))
+                messages.error(request,'Produto não encontrado')
+                
+        return redirect('productions:concluded')
     
+
     raise Exception('not permission method get')
 
 
